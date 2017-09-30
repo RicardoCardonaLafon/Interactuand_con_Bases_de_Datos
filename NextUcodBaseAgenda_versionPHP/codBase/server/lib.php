@@ -2,8 +2,8 @@
   class ConectorBD
   {
     private $host = 'localhost';
-    private $user = 'usuario_prueba';
-    private $password = 'vemas07';
+    private $user = 'nextu';
+    private $password = 'Un1ver$1ty';
     private $conexion;
 
     function initConexion($nombre_db){

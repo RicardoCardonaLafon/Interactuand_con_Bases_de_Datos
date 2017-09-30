@@ -4,16 +4,12 @@
 
   $con = new ConectorBD();
 
-  if ($con->initConexion('agenda_db')=='OK') {
+  if ($con->initConexion('BDAgendaNextU')=='OK') {
     $conexion = $con->getConexion();
 
-    $insert = $conexion->prepare('INSERT INTO usuarios (Nombre_Usuario, Pasw, Nombre_Completo, Fecha_Nacimiento) VALUES (?,?,?,?)');
+    $insert = $conexion->prepare('INSERT INTO usuarios (email, pass, nombre, nacimiento) VALUES (?,?,?,?)');
     $insert->bind_param("ssss", $Nombre_Usuario, $Pasw, $Nombre_Completo, $Fecha_Nacimiento);
-    /*$insert->bind_param(1, $Nombre_Usuario);
-    $insert->bind_param(2, $Pasw);
-    $insert->bind_param(3, $Nombre_Completo);
-    $insert->bind_param(4, $Fecha_Nacimiento);*/
-      
+        
 
     $Nombre_Usuario = 'martin.lafon@mail.com';
     $Pasw = password_hash("primer_usu_12345", PASSWORD_DEFAULT);

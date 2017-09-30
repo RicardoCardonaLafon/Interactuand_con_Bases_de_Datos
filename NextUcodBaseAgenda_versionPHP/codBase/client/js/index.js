@@ -5,20 +5,20 @@ $(function(){
 
 class Login {
   constructor() {
-    this.submitEvent()
+    this.submitEvent();
   }
 
   submitEvent(){
     $('form').submit((event)=>{
-      event.preventDefault()
-      this.sendForm()
-    })
+      event.preventDefault();
+      this.sendForm();
+    });
   }
 
   sendForm(){
     let form_data = new FormData();
-    form_data.append('username', $('#user').val())
-    form_data.append('password', $('#password').val())
+    form_data.append('username', $('#user').val());
+    form_data.append('password', $('#password').val());
     $.ajax({
       url: '../server/check_login.php',
       dataType: "json",
@@ -28,15 +28,13 @@ class Login {
       data: form_data,
       type: 'POST',
       success: function(php_response){
-        if (php_response.msg == "OK") {
-          window.location.href = 'main.html';
-        }else {
-          alert(php_response.msg);
-        }
+        if (php_response.msg == "OK") window.location.href = 'main.html';
+        else alert(php_response.msg);
       },
-      error: function(){
-        alert("error en la comunicación con el servidor");
+      error: function(xhr, status, error){
+        alert("ERROR en la comunicación con el servidor: " + status + " - " + error);
+        
       }
-    })
+    });
   }
 }
