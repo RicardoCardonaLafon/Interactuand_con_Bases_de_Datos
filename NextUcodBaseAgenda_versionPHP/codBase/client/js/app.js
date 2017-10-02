@@ -32,7 +32,7 @@ class EventsManager {
         		center: 'title',
         		right: 'month,agendaWeek,basicDay'
         	},
-        	defaultDate: '2017-04-15',
+        	defaultDate: '2017-09-30',
         	navLinks: true,
         	editable: true,
         	eventLimit: true,
@@ -166,8 +166,10 @@ class EventsManager {
         		if (data.msg=="OK") alert('Se ha actualizado el evento exitosamente');
         		else alert(data.msg);
           	},
-          	error: function(){
-            	alert("error en la comunicación con el servidor");
+          	error: function(xhr, status, error){
+            	//alert("error en la comunicación con el servidor");
+                console.log(xhr);
+                alert("Error en la comunicación con server: " + status + " - " + error);
           	}
         });
     }
